@@ -1,0 +1,23 @@
+Author: Harry Hamilton
+Email: hahamilt@tcd.ie
+
+All code in this project was tested on chuck
+
+The current directory contains three subdirectories, each of 
+which concerns a seperate part of the project.
+
+The first of these is Basic_Greeks_Calculations, which contains a set  of programs and 
+code snippets enumerating some of the standard methods used for
+option pricing and the calcultation of greeks, including a finite
+difference solver, a Monte Carlo method and an analytic solution
+for a European option. This directory also contains a code snippet
+containing the application code for the same calculation using 
+adjoint differenciation.
+
+The second subdirctory contains three subdirectories. Adjoint_Code and Tangent-Linear_Code
+concern their respective models while Basic_Forward_Mode provides an alternate and somewhat
+neater implementation of the tangent-linear model using dual numbers.
+
+The final subdirectory is MLMC, whichconcerns an implementation of multilevel Monte Carlo.
+The directory includes a Makefile to build the program. A seperate README file is provided
+in this section detailing important functions.
