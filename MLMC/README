@@ -1,0 +1,65 @@
+author: Harry Hamilton
+README file for MUltilevel Monte Carlo Implementation. Functions are divided by .cpp file.
+
+mlmc.cpp
+*****************************************************************************************
+   P = mlmc(Lmin,Lmax,N0,eps, mlmc_l, alpha,beta,gamma, Nl,Cl)
+
+   Lmin  = min level refinement       >= 2
+   Lmax  = max refinement       >= Lmin
+   N0    = initial samples         > 0
+   eps   = accuracy      > 0 
+ 
+   mlmc_l(l,N,sums)   Specific level of refinement
+        l       = level
+        N       = paths
+        sums[0] = sum(cost)
+        sums[1] = sum(Y)
+        sums[2] = sum(Y^2)
+        where Y are iid samples with expected value:
+        E[P_0]           on level 0
+        E[P_l - P_{l-1}] on level l>0
+
+   Complexity Theorem parameters:
+   alpha -> weak error is  O(2^{-alpha*l})
+   beta  -> variance is    O(2^{-beta*l})
+   gamma -> sample cost is O(2^{gamma*l})
+
+   P   = value
+   Nl  = number of samples at each level
+   Cl  = average cost of samples at each level
+*****************************************************************************************
+
+
+mlmc_test.cpp
+*****************************************************************************************
+  mlmc_test(mlmc_l, N,L, N0,Eps,Lmin,Lmax, fp)
+
+  test routine
+
+   mlmc_l(l,N,sums)     low-level routine
+
+   inputs:  l = level
+            N = number of paths
+
+   output: sums[0] = sum(cost)
+           sums[1] = sum(Pf-Pc)
+           sums[2] = sum((Pf-Pc).^2)
+           sums[3] = sum((Pf-Pc).^3)
+           sums[4] = sum((Pf-Pc).^4)
+           sums[5] = sum(Pf)
+           sums[6] = sum(Pf.^2)
+
+   N      = samples for convergence tests
+   L      = levels for convergence tests
+
+   N0     = initial number of samples
+   Eps    = desired accuracy array (terminated by value 0)
+   Lmin   = min refinement
+   Lmax   = maxrefinement
+
+   fp     = file handle
+*****************************************************************************************
+
+
+
